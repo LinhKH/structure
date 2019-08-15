@@ -1,0 +1,27 @@
+<div class="dash-header">
+        <div class="dash-title">
+            <h1>{{title}}</h1>
+        </div>
+        <div class="dash-nav">
+            <a [routerLink]="['/admin/post/add']" class="btn btn-success">Add Post</a>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>#ID</th>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Created At</th>
+            <th>Action</th>
+        </tr>
+        <tr *ngFor="let post of allpost">
+            <td>{{post.Id}}</td>
+            <td><img src="../../../assets/images/{{post.Image}}"></td>
+            <td>{{post.Title}}</td>
+            <td>{{post.EnteredDate | date: 'mediumDate'}}</td>
+            <td class="action">
+                <a [routerLink]="['/admin/post/edit', post.Id]" class="btn btn-info btn-sm">Edit</a>
+                <a (click)="onDelete(post.Id)" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+    </table>
